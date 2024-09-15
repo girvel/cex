@@ -6,7 +6,7 @@ x freeing
 x separate creation/allocation?
 x extending capacity & length
 x getting length
-- iterators?
+c iterators?
 - inserting at the end
 - strings
 
