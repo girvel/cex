@@ -9,8 +9,8 @@
 void proto_system_update(Entity *e) {
     printf(
         "%s stands at X = %i\n",
-        string_to_c(((Name *)entity_get_component(*e, COMPONENT_NAME))->text),
-        ((Position *)entity_get_component(*e, COMPONENT_POSITION))->x
+        string_to_c(name_get(*e)->text),
+        position_get(*e)->x
     );
 }
 
@@ -39,14 +39,10 @@ int main() {
 
     Entity e = entity_create(COMPONENT_N);
 
-    Name *name = malloc(sizeof(Name));
-    name->text = string_from("girvel");
-    entity_set_component(e, COMPONENT_NAME, name);
-
-    Position *position = malloc(sizeof(Position));
-    position->x = 22;
-    entity_set_component(e, COMPONENT_POSITION, position);
-    printf("x is %i\n", ((Position *)entity_get_component(e, COMPONENT_POSITION))->x);
+    // consider even shorter syntax
+    entity_set_component(e, COMPONENT_NAME, name_create(string_from("girvel")));
+    entity_set_component(e, COMPONENT_POSITION, position_create(22));
+    printf("x is %i\n", position_get(e)->x);
 
     proto_system_update(&e);
 
