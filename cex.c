@@ -1,6 +1,6 @@
 #include <assert.h>
 #include <stdio.h>
-#include "dynamic_array.h"
+#include "framework/dynamic_array.h"
 
 // typedef struct {
 //   void* components[3];

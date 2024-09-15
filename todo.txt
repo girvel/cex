@@ -7,7 +7,7 @@ x separate creation/allocation?
 x extending capacity & length
 x getting length
 c iterators?
-- inserting at the end
+x inserting at the end
 - strings
 
 - Write ECS
