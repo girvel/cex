@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include <string.h>
 #include "dynamic_string.h"
 
@@ -18,5 +19,6 @@ char *string_to_c(String string) {
 }
 
 void string_free(String *string) {
+    printf("Deallocating string '%s'\n", string_to_c(*string));
     array_free(&string->_array);
 }

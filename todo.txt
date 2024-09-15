@@ -14,6 +14,8 @@ x basic tests
 c fix relative includes
 
 ECS PART
-- sketch entity
-- separate file & pretty up
+x sketch entity
+x separate file & pretty up
 - free entity
+- component definition macros
+- a real system

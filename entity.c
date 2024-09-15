@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include "entity.h"
 
 
@@ -20,3 +21,18 @@ void *entity_get_component(Entity e, size_t component_id) {
     return ARRAY_AT(void *, e._components, component_id);
 }
 
+void entity_free(Entity *e) {
+    printf("Disposing of an entity\n");
+    for (size_t i = 0; i < array_get_length(e->_components); i++) {
+        printf("i = %lu\n", i);
+        void *component = entity_get_component(*e, i);
+        if (component == NULL) continue;
+
+        // deallocator is always the first field
+        void (*deallocator)(void *) = *(void (**)(void *)) component;
+        if (deallocator != NULL) deallocator(component);
+
+        free(component);
+    }
+    array_free(&e->_components);
+}

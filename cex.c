@@ -47,5 +47,7 @@ int main() {
 
     proto_system_update(&e);
 
+    entity_free(&e);
+
     return 0;
 }
