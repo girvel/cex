@@ -3,10 +3,11 @@
 #include "framework/dynamic_array.h"
 #include "framework/dynamic_string.h"
 #include "ecs/entity.h"
+#include "ecs/system.h"
 #include "components.h"
 
 
-void proto_system_update(Entity *e) {
+void report_system_process(Entity *e) {
     printf(
         "%s stands at X = %i\n",
         string_to_c(name_get(*e)->text),
@@ -37,17 +38,20 @@ int main() {
     string_free(&s);
     printf("New string is '%s'\n", string_to_c(s));
 
-    Entity e = entity_create(COMPONENT_N);
+    Entity e1 = entity_create(COMPONENT_N);
+    name_set(e1, string_from("girvel"));
+    position_set(e1, 22);
 
-    // consider even shorter syntax
-    
-    name_set(e, string_from("girvel"));
-    position_set(e, 22);
-    printf("x is %i\n", position_get(e)->x);
+    Entity e2 = entity_create(COMPONENT_N);
+    name_set(e2, string_from("some guy")),
+    position_set(e2, 0);
 
-    proto_system_update(&e);
+    System report_system = system_create(report_system_process);
+    system_add(&report_system, &e1);
+    system_add(&report_system, &e2);
+    system_update(report_system);
 
-    entity_free(&e);
+    entity_free(&e1);
 
     return 0;
 }

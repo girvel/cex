@@ -18,6 +18,9 @@ x sketch entity
 x separate file & pretty up
 x free entity
 x component definition macros
-- a real system
+x a real system
 - component overwrite safety
 - even more advanced codegen for components covering declarations
+- filters for system adding
+- world
+- creating entities through world
