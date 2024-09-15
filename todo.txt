@@ -1,3 +1,3 @@
 x Understand & set up CMake
-- Configure neovim
+x Configure neovim
 - Write ECS
