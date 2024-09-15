@@ -1,3 +1,5 @@
+#pragma once
+
 #define MAX(A, B)            \
 ({                           \
     __typeof__ (A) _a = (A); \
