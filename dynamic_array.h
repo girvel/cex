@@ -7,7 +7,8 @@ typedef struct {
     size_t _type_size, _capacity, _length;
 } DynamicArray;
 
-DynamicArray array_allocate(size_t type_size, size_t capacity);
+DynamicArray array_new(size_t type_size);
+void array_increase_capacity(DynamicArray *array, size_t delta_capacity);
 void *array_at(DynamicArray array, size_t index);
 void array_free(DynamicArray *array);
 

@@ -4,14 +4,18 @@
 #include "dynamic_array.h"
 
 
-DynamicArray array_allocate(size_t type_size, size_t capacity) {
-    DynamicArray result;
-    result._type_size = type_size;
-    result._capacity = capacity;
-    result._length = 0;
+DynamicArray array_new(size_t type_size) {
+    return (DynamicArray) {
+        ._start = NULL,
+        ._type_size = type_size,
+        ._capacity = 0,
+        ._length = 0,
+    };
+}
 
-    result._start = calloc(capacity, type_size);
-    return result;
+void array_increase_capacity(DynamicArray *array, size_t delta_capacity) {
+    array->_capacity = array->_capacity + delta_capacity;
+    array->_start = realloc(array->_start, array->_capacity);
 }
 
 void *array_at(DynamicArray array, size_t index) {

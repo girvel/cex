@@ -2,9 +2,10 @@ x Understand & set up CMake
 x Configure neovim
 
 DYNAMIC ARRAY SAGA
-- freeing
+x freeing
+x separate creation/allocation?
+- extending capacity & length
 - inserting at the end
-- separate creation/allocation?
 - strings
 
 - Write ECS
