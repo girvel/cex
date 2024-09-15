@@ -1,7 +1,8 @@
 #pragma once
 
 #include "framework/dynamic_string.h"
-#include "entity.h"
+#include "ecs/entity.h"
+#include "ecs/component.h"
 
 
 typedef enum {
@@ -10,18 +11,18 @@ typedef enum {
     COMPONENT_N,
 } COMPONENT;
 
-typedef struct {
-    void *_deallocator;
+COMPONENT_DEFINE(
+    name, 
     String text;
-} Name;
+)
 
-Name *name_get(Entity e);
+name *name_get(Entity e);
 void name_set(Entity e, String text);
 
-typedef struct {
-    void *_deallocator;
+COMPONENT_DEFINE(
+    position,
     int x;
-} Position;
+)
 
-Position *position_get(Entity e);
+position *position_get(Entity e);
 void position_set(Entity e, int x);

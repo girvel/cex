@@ -16,6 +16,8 @@ c fix relative includes
 ECS PART
 x sketch entity
 x separate file & pretty up
-- free entity
-- component definition macros
+x free entity
+x component definition macros
 - a real system
+- component overwrite safety
+- even more advanced codegen for components covering declarations

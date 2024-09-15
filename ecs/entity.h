@@ -1,6 +1,6 @@
 #pragma once
 
-#include "framework/dynamic_array.h"
+#include "../framework/dynamic_array.h"
 
 
 typedef struct {

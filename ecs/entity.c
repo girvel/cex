@@ -12,7 +12,6 @@ Entity entity_create(size_t max_components_n) {
 }
 
 void entity_set_component(Entity e, size_t component_id, void *component) {
-    // TODO disallow overwriting components
     *((void **) array_at(e._components, component_id)) = component;
 }
 

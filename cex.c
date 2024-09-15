@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include "framework/dynamic_array.h"
 #include "framework/dynamic_string.h"
-#include "entity.h"
+#include "ecs/entity.h"
 #include "components.h"
 
 

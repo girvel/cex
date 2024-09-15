@@ -2,6 +2,7 @@
 #include <assert.h>
 #include "../dynamic_array.h"
 
+
 void test_basic_use_case() {
     printf("Basic use case...");
     int *first_base = (int[]) {1, 2, 3};
