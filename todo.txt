@@ -1,0 +1,3 @@
+x Understand & set up CMake
+- Configure neovim
+- Write ECS
