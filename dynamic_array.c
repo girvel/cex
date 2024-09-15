@@ -1,3 +1,4 @@
+#include <string.h>
 #include <stdlib.h>
 #include <assert.h>
 #include <stdbool.h>
@@ -43,10 +44,15 @@ size_t array_get_length(DynamicArray array) {
     return array._length;
 }
 
+void array_extend(DynamicArray *array, size_t extension_length, void *extension) {
+    size_t base_index = array->_length;
+    array_increase_length(array, extension_length);
+    memcpy(array_at(*array, base_index), extension, extension_length * array->_type_size);
+}
+
 void array_free(DynamicArray *array) {
     free(array->_start);
     array->_start = NULL;
     array->_capacity = 0;
     array->_length = 0;
 }
-
