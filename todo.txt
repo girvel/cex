@@ -1,3 +1,10 @@
 x Understand & set up CMake
 x Configure neovim
+
+DYNAMIC ARRAY SAGA
+- freeing
+- inserting at the end
+- separate creation/allocation?
+- strings
+
 - Write ECS
