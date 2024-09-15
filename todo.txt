@@ -5,6 +5,8 @@ DYNAMIC ARRAY SAGA
 x freeing
 x separate creation/allocation?
 - extending capacity & length
+- getting length
+- iterators?
 - inserting at the end
 - strings
 

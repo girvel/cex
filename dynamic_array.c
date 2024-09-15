@@ -2,6 +2,7 @@
 #include <assert.h>
 #include <stdbool.h>
 #include "dynamic_array.h"
+#include "common.h"
 
 
 DynamicArray array_new(size_t type_size) {
@@ -14,13 +15,32 @@ DynamicArray array_new(size_t type_size) {
 }
 
 void array_increase_capacity(DynamicArray *array, size_t delta_capacity) {
-    array->_capacity = array->_capacity + delta_capacity;
-    array->_start = realloc(array->_start, array->_capacity);
+    array->_capacity += delta_capacity;
+    array->_start = realloc(array->_start, array->_capacity * array->_type_size);
+}
+
+void array_increase_length(DynamicArray *array, size_t delta_length) {
+    array->_length += delta_length;
+    if (array->_length <= array->_capacity) return;
+
+    size_t delta_capacity = MAX(4, array->_capacity);
+    while (array->_length > array->_capacity + delta_capacity) {
+        delta_capacity *= 2;
+    }
+    array_increase_capacity(array, delta_capacity);
 }
 
 void *array_at(DynamicArray array, size_t index) {
     assert(index < array._length);
     return array._start + array._type_size * index;
+}
+
+size_t array_get_capacity(DynamicArray array) {
+    return array._capacity;
+}
+
+size_t array_get_length(DynamicArray array) {
+    return array._length;
 }
 
 void array_free(DynamicArray *array) {
