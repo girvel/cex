@@ -14,12 +14,12 @@ typedef struct {
     String text;
 } Name;
 
-Name *name_create(String text);
 Name *name_get(Entity e);
+void name_set(Entity e, String text);
 
 typedef struct {
     int x;
 } Position;
 
-Position *position_create(int x);
 Position *position_get(Entity e);
+void position_set(Entity e, int x);

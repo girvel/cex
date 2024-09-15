@@ -40,8 +40,9 @@ int main() {
     Entity e = entity_create(COMPONENT_N);
 
     // consider even shorter syntax
-    entity_set_component(e, COMPONENT_NAME, name_create(string_from("girvel")));
-    entity_set_component(e, COMPONENT_POSITION, position_create(22));
+    
+    name_set(e, string_from("girvel"));
+    position_set(e, 22);
     printf("x is %i\n", position_get(e)->x);
 
     proto_system_update(&e);
