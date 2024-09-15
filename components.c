@@ -1,9 +1,7 @@
-#include <stdio.h>
 #include "components.h"
 
 
 void _name_dispose(Name *name) {
-    printf("Disposing of the name '%s'\n", string_to_c(name->text));
     string_free(&name->text);
 }
 

@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
 #include <assert.h>
@@ -52,11 +51,6 @@ void array_extend(DynamicArray *array, size_t extension_length, void *extension)
 }
 
 void array_free(DynamicArray *array) {
-    printf("Deallocating array start = %lu, length = %lu, capacity = %lu\n",
-        (size_t) array->_start,
-        array->_length,
-        array->_capacity
-    );
     free(array->_start);
     array->_start = NULL;
     array->_capacity = 0;

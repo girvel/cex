@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include "entity.h"
 
 
@@ -22,9 +21,7 @@ void *entity_get_component(Entity e, size_t component_id) {
 }
 
 void entity_free(Entity *e) {
-    printf("Disposing of an entity\n");
     for (size_t i = 0; i < array_get_length(e->_components); i++) {
-        printf("i = %lu\n", i);
         void *component = entity_get_component(*e, i);
         if (component == NULL) continue;
 
