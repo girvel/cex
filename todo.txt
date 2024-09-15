@@ -8,9 +8,12 @@ x extending capacity & length
 x getting length
 c iterators?
 x inserting at the end
-- strings
+x strings (basic)
 
-- basic tests
-- fix relative includes
+x basic tests
+c fix relative includes
 
-- Write ECS
+ECS PART
+- sketch entity
+- separate file & pretty up
+- free entity
