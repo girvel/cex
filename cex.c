@@ -73,6 +73,8 @@ int main() {
     system_add(&report_system, &e2);
     system_add(&report_system, &e3);
     system_add(&report_system, &e4);
+
+    system_update(report_system);
     system_update(report_system);
 
     entity_free(&e1);

@@ -20,15 +20,14 @@ void *entity_get_component(Entity e, size_t component_id) {
 }
 
 void entity_free(Entity *e) {
-    for (size_t i = 0; i < array_get_length(e->_components); i++) {
-        void *component = entity_get_component(*e, i);
-        if (component == NULL) continue;
+    ARRAY_FOR(void *, _, component, e->_components, {
+        if (*component == NULL) continue;
 
         // deallocator is always the first field
-        void (*deallocator)(void *) = *(void (**)(void *)) component;
-        if (deallocator != NULL) deallocator(component);
+        void (*deallocator)(void *) = *(void (**)(void *)) *component;
+        if (deallocator != NULL) deallocator(*component);
 
-        free(component);
-    }
+        free(*component);
+    })
     array_free(&e->_components);
 }
