@@ -29,10 +29,17 @@ void array_free(Array *array);
 
 #define ARRAY_AT(TYPE, ARRAY, INDEX) (*((TYPE *)array_at((ARRAY), (INDEX))))
 
-#define ARRAY_APPEND(TYPE, ARRAY, ITEM) {\
-    Array *array = (ARRAY); \
-    size_t i = array_get_length(*array); \
-    array_increase_length(array, 1); \
-    ARRAY_AT(TYPE, *array, i) = ITEM; \
+#define ARRAY_APPEND(TYPE, ARRAY, ITEM) { \
+    Array *this_array = (ARRAY); \
+    size_t i = array_get_length(*this_array); \
+    array_increase_length(this_array, 1); \
+    ARRAY_AT(TYPE, *this_array, i) = ITEM; \
 }
 
+#define ARRAY_FOR(TYPE, INDEX_VAR, ELEMENT_VAR, ARRAY, ITERATION) { \
+    Array this_array = (ARRAY); \
+    for (size_t INDEX_VAR = 0; INDEX_VAR < array_get_length(this_array); INDEX_VAR++) { \
+        TYPE *ELEMENT_VAR = array_at(this_array, INDEX_VAR); \
+        ITERATION \
+    } \
+}

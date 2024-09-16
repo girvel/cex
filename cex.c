@@ -30,9 +30,9 @@ int main() {
         Array demo = ARRAY(int, 32, 64, 128);
         array_extend(&demo, 3, (int[]) {32, 64, 128});
 
-        for (size_t i = 0; i < array_get_length(demo); i++) {
-            printf("array[%lu] = %i\n", i, ARRAY_AT(int, demo, i));
-        }
+        ARRAY_FOR(int, i, e, demo, {
+            printf("array[%lu] = %i\n", i, *e);
+        })
 
         printf(
             "array.length = %lu, array.capacity = %lu\n",
@@ -76,6 +76,11 @@ int main() {
     system_update(report_system);
 
     entity_free(&e1);
+    entity_free(&e2);
+    entity_free(&e3);
+    entity_free(&e4);
+    
+    system_free(&report_system);
 
     return 0;
 }

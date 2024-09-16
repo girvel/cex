@@ -22,7 +22,7 @@ x a real system
 x filters for system adding
 x string_format
 x optimized formatting
-- inplace array initialization
+x inplace array initialization
 - another swing at iteration
 - world
 - component overwrite safety

@@ -16,18 +16,18 @@ void system_free(System *system) {
 }
 
 bool system_add(System *system, Entity *item) {
-    for (size_t i = 0; i < array_get_length(system->_required_components); i++) {
-        if (entity_get_component(*item, ARRAY_AT(int, system->_required_components, i)) == NULL) {
+    ARRAY_FOR(int, _, component_id, system->_required_components, {
+        if (entity_get_component(*item, *component_id) == NULL) {
             return false;
         }
-    }
+    })
 
     ARRAY_APPEND(Entity *, &system->_entities, item);
     return true;
 }
 
 void system_update(System system) {
-    for (size_t i = 0; i < array_get_length(system._entities); i++) {
-        system.process(ARRAY_AT(Entity *, system._entities, i));
-    }
+    ARRAY_FOR(Entity *, i, e, system._entities, {
+        system.process(*e);
+    })
 }
