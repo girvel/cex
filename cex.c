@@ -51,18 +51,18 @@ int main() {
         printf("New string is '%s'\n", string_to_c(s));
     }
 
-    Entity e1 = entity_create(COMPONENT_N);
+    Entity e1 = entity_create(COMPONENT_MAX_ID);
     name_set(e1, string_from("girvel"));
     position_set(e1, 22);
 
-    Entity e2 = entity_create(COMPONENT_N);
+    Entity e2 = entity_create(COMPONENT_MAX_ID);
     name_set(e2, string_from("some guy"));
     position_set(e2, 0);
 
-    Entity e3 = entity_create(COMPONENT_N);
+    Entity e3 = entity_create(COMPONENT_MAX_ID);
     name_set(e3, string_from("guy without a position"));
 
-    Entity e4 = entity_create(COMPONENT_N);
+    Entity e4 = entity_create(COMPONENT_MAX_ID);
 
     System report_system = system_create(
         ARRAY(int, COMPONENT_NAME),

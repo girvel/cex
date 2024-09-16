@@ -23,8 +23,10 @@ x filters for system adding
 x string_format
 x optimized formatting
 x inplace array initialization
-- another swing at iteration
+x another swing at iteration
 - world
+- globbing w/ cmake
+- system_add receiving hanging references. The same redesign for world?
 - component overwrite safety
-- even more advanced codegen for components covering declarations
+c even more advanced codegen for components covering declarations
 - creating entities through world

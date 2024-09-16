@@ -4,7 +4,7 @@
 
 
 typedef struct {
-  Array _components;
+    Array _components;
 } Entity;
 
 Entity entity_create(size_t max_components_n);
