@@ -26,26 +26,30 @@ void report_system_process(Entity *e) {
 
 
 int main() {
-    Array array = array_new(sizeof(int));
-    array_extend(&array, 3, (int[]) {32, 64, 128});
+    {
+        Array array = array_new(sizeof(int));
+        array_extend(&array, 3, (int[]) {32, 64, 128});
 
-    for (size_t i = 0; i < array_get_length(array); i++) {
-        printf("array[%lu] = %i\n", i, ARRAY_AT(int, array, i));
+        for (size_t i = 0; i < array_get_length(array); i++) {
+            printf("array[%lu] = %i\n", i, ARRAY_AT(int, array, i));
+        }
+
+        printf(
+            "array.length = %lu, array.capacity = %lu\n",
+            array_get_length(array),
+            array_get_capacity(array)
+        );
+
+        array_free(&array);
     }
 
-    printf(
-        "array.length = %lu, array.capacity = %lu\n",
-        array_get_length(array),
-        array_get_capacity(array)
-    );
+    {
+        String s = string_from("Hello, world!");
+        printf("Old string is '%s'\n", string_to_c(s));
 
-    array_free(&array);
-
-    String s = string_from("Hello, world!");
-    printf("Old string is '%s'\n", string_to_c(s));
-
-    string_free(&s);
-    printf("New string is '%s'\n", string_to_c(s));
+        string_free(&s);
+        printf("New string is '%s'\n", string_to_c(s));
+    }
 
     Entity e1 = entity_create(COMPONENT_N);
     name_set(e1, string_from("girvel"));
@@ -60,11 +64,11 @@ int main() {
 
     Entity e4 = entity_create(COMPONENT_N);
 
-    Array required_components = array_new(sizeof(int));
-    array_increase_capacity(&required_components, 1);
-    array_extend(&required_components, 1, (int[]) {COMPONENT_NAME});
+    System report_system = system_create(
+        array(sizeof(int), 1, (int[]) {COMPONENT_NAME}),
+        report_system_process
+    );
 
-    System report_system = system_create(required_components, report_system_process);
     system_add(&report_system, &e1);
     system_add(&report_system, &e2);
     system_add(&report_system, &e3);

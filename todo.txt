@@ -20,8 +20,8 @@ x free entity
 x component definition macros
 x a real system
 x filters for system adding
-- string_format
-- optimized formatting
+x string_format
+x optimized formatting
 - inplace array initialization
 - another swing at iteration
 - world
