@@ -10,6 +10,7 @@ typedef struct {
 } Array;
 
 Array array_new(size_t type_size);
+Array array_own(size_t type_size, size_t memory_size, void *base);
 void array_increase_capacity(Array *array, size_t delta_capacity);
 void array_increase_length(Array *array, size_t delta_length);
 

@@ -9,6 +9,14 @@ String string_from(char *base_c_string) {
     return (String) {._array = array};
 }
 
+
+String string_own(size_t memory_size, char *base_c_string) {
+    String result;
+    result._array = array_own(sizeof(char), memory_size, base_c_string);
+    result._array._length--;
+    return result;
+}
+
 char *string_to_c(String string) {
     size_t length = array_get_length(string._array);
     char *result = malloc(sizeof(char) * (length + 1));

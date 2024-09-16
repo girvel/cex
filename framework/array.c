@@ -15,6 +15,15 @@ Array array_new(size_t type_size) {
     };
 }
 
+Array array_own(size_t type_size, size_t memory_size, void *base) {
+    return (Array) {
+        ._start = base,
+        ._type_size = type_size,
+        ._capacity = memory_size,
+        ._length = memory_size,
+    };
+}
+
 void array_increase_capacity(Array *array, size_t delta_capacity) {
     array->_capacity += delta_capacity;
     array->_start = realloc(array->_start, array->_capacity * array->_type_size);
