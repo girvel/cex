@@ -9,22 +9,19 @@
 
 void report_system_process(Entity *e) {
     position *p = position_get(*e);
-    String postfix;
-    if (p == NULL) {
-        postfix = string_from("does not have a position");
-    } else {
-        int length = snprintf(NULL, 0, "stands at X = %i", p->x);
-        char *str = malloc(length + 1);
-        snprintf(str, length + 1, "stands at X = %i", p->x);
-        postfix = string_from(str);
-        free(str);
-    }
+    String postfix = (
+        p == NULL
+        ? string_from("does not have a position")
+        : STRING_FORMAT("stands at X = %i", p->x)
+    );
 
     printf(
         "%s %s\n",
         string_to_c(name_get(*e)->text),
         string_to_c(postfix)
     );
+
+    string_free(&postfix);
 }
 
 
