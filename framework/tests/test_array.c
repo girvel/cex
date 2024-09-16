@@ -3,8 +3,8 @@
 #include "../array.h"
 
 
-void test_basic_use_case() {
-    printf("Basic use case...");
+void test_array_basic_use_case() {
+    printf("Array basic use case");
     int *first_base = (int[]) {1, 2, 3};
     Array array = array_new(sizeof(int));
     array_extend(&array, 3, first_base);
@@ -12,9 +12,4 @@ void test_basic_use_case() {
         assert(first_base[i] == ARRAY_AT(int, array, i));
     }
     printf("\tSUCCESS\n");
-}
-
-int main() {
-    printf("\n-- Testing dynamic arrays --\n");
-    test_basic_use_case();
 }
