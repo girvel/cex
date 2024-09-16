@@ -19,8 +19,8 @@ x separate file & pretty up
 x free entity
 x component definition macros
 x a real system
-- component overwrite safety
-- even more advanced codegen for components covering declarations
 - filters for system adding
 - world
+- component overwrite safety
+- even more advanced codegen for components covering declarations
 - creating entities through world

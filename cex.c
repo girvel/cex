@@ -1,7 +1,7 @@
 #include <assert.h>
 #include <stdio.h>
-#include "framework/dynamic_array.h"
-#include "framework/dynamic_string.h"
+#include "framework/array.h"
+#include "framework/string.h"
 #include "ecs/entity.h"
 #include "ecs/system.h"
 #include "components.h"
@@ -17,7 +17,7 @@ void report_system_process(Entity *e) {
 
 
 int main() {
-    DynamicArray array = array_new(sizeof(int));
+    Array array = array_new(sizeof(int));
     array_extend(&array, 3, (int[]) {32, 64, 128});
 
     for (size_t i = 0; i < array_get_length(array); i++) {

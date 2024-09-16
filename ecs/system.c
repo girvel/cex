@@ -1,5 +1,5 @@
 #include "system.h"
-#include "../framework/dynamic_array.h"
+#include "../framework/array.h"
 
 
 System system_create(void (*process)(Entity *)) {
@@ -13,8 +13,9 @@ void system_free(System *system) {
     array_free(&system->_entities);
 }
 
-void system_add(System *system, Entity *item) {
+bool system_add(System *system, Entity *item) {
     ARRAY_APPEND(Entity *, &system->_entities, item);
+    return true;
 }
 
 void system_update(System system) {

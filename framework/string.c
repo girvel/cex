@@ -1,8 +1,8 @@
 #include <string.h>
-#include "dynamic_string.h"
+#include "string.h"
 
 String string_from(char *base_c_string) {
-    DynamicArray array = array_new(sizeof(char));
+    Array array = array_new(sizeof(char));
     size_t string_length = 0;
     while (base_c_string[string_length] != '\0') string_length++;
     array_extend(&array, string_length, base_c_string);

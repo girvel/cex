@@ -1,10 +1,10 @@
 #pragma once
 
-#include "../framework/dynamic_array.h"
+#include "../framework/array.h"
 
 
 typedef struct {
-  DynamicArray _components;
+  Array _components;
 } Entity;
 
 Entity entity_create(size_t max_components_n);

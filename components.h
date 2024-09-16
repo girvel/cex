@@ -1,6 +1,6 @@
 #pragma once
 
-#include "framework/dynamic_string.h"
+#include "framework/string.h"
 #include "ecs/entity.h"
 #include "ecs/component.h"
 

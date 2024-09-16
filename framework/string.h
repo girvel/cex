@@ -1,10 +1,10 @@
 #pragma once
 
-#include "dynamic_array.h"
+#include "array.h"
 
 
 typedef struct {
-    DynamicArray _array;
+    Array _array;
 } String;
 
 String string_from(char *base_c_string);
