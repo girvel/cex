@@ -8,10 +8,22 @@
 
 
 void report_system_process(Entity *e) {
+    position *p = position_get(*e);
+    String postfix;
+    if (p == NULL) {
+        postfix = string_from("does not have a position");
+    } else {
+        int length = snprintf(NULL, 0, "stands at X = %i", p->x);
+        char *str = malloc(length + 1);
+        snprintf(str, length + 1, "stands at X = %i", p->x);
+        postfix = string_from(str);
+        free(str);
+    }
+
     printf(
-        "%s stands at X = %i\n",
+        "%s %s\n",
         string_to_c(name_get(*e)->text),
-        position_get(*e)->x
+        string_to_c(postfix)
     );
 }
 
@@ -43,12 +55,23 @@ int main() {
     position_set(e1, 22);
 
     Entity e2 = entity_create(COMPONENT_N);
-    name_set(e2, string_from("some guy")),
+    name_set(e2, string_from("some guy"));
     position_set(e2, 0);
 
-    System report_system = system_create(report_system_process);
+    Entity e3 = entity_create(COMPONENT_N);
+    name_set(e3, string_from("guy without a position"));
+
+    Entity e4 = entity_create(COMPONENT_N);
+
+    Array required_components = array_new(sizeof(int));
+    array_increase_capacity(&required_components, 1);
+    array_extend(&required_components, 1, (int[]) {COMPONENT_NAME});
+
+    System report_system = system_create(required_components, report_system_process);
     system_add(&report_system, &e1);
     system_add(&report_system, &e2);
+    system_add(&report_system, &e3);
+    system_add(&report_system, &e4);
     system_update(report_system);
 
     entity_free(&e1);

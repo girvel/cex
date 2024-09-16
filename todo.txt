@@ -19,7 +19,10 @@ x separate file & pretty up
 x free entity
 x component definition macros
 x a real system
-- filters for system adding
+x filters for system adding
+- string_format
+- inplace array initialization
+- another swing at iteration
 - world
 - component overwrite safety
 - even more advanced codegen for components covering declarations
