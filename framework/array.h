@@ -2,6 +2,7 @@
 
 #include <stdlib.h>
 #include <stdbool.h>
+#include "macro.h"
 
 
 typedef struct {
@@ -11,7 +12,7 @@ typedef struct {
 
 Array array_new(size_t type_size);
 Array array_own(size_t type_size, size_t memory_size, void *base);
-Array array(size_t type_size, size_t memory_size, void *base);
+Array array_from(size_t type_size, size_t memory_size, void *base);
 
 void array_increase_capacity(Array *array, size_t delta_capacity);
 void array_increase_length(Array *array, size_t delta_length);
@@ -23,6 +24,8 @@ size_t array_get_length(Array array);
 void array_extend(Array *array, size_t extension_length, void *extension);
 
 void array_free(Array *array);
+
+#define ARRAY(TYPE, ...) array_from(sizeof(TYPE), VARIADIC_LENGTH(__VA_ARGS__), (TYPE[]) {__VA_ARGS__})
 
 #define ARRAY_AT(TYPE, ARRAY, INDEX) (*((TYPE *)array_at((ARRAY), (INDEX))))
 

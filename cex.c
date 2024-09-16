@@ -27,20 +27,20 @@ void report_system_process(Entity *e) {
 
 int main() {
     {
-        Array array = array_new(sizeof(int));
-        array_extend(&array, 3, (int[]) {32, 64, 128});
+        Array demo = ARRAY(int, 32, 64, 128);
+        array_extend(&demo, 3, (int[]) {32, 64, 128});
 
-        for (size_t i = 0; i < array_get_length(array); i++) {
-            printf("array[%lu] = %i\n", i, ARRAY_AT(int, array, i));
+        for (size_t i = 0; i < array_get_length(demo); i++) {
+            printf("array[%lu] = %i\n", i, ARRAY_AT(int, demo, i));
         }
 
         printf(
             "array.length = %lu, array.capacity = %lu\n",
-            array_get_length(array),
-            array_get_capacity(array)
+            array_get_length(demo),
+            array_get_capacity(demo)
         );
 
-        array_free(&array);
+        array_free(&demo);
     }
 
     {
@@ -65,7 +65,7 @@ int main() {
     Entity e4 = entity_create(COMPONENT_N);
 
     System report_system = system_create(
-        array(sizeof(int), 1, (int[]) {COMPONENT_NAME}),
+        ARRAY(int, COMPONENT_NAME),
         report_system_process
     );
 

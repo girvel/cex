@@ -24,7 +24,7 @@ Array array_own(size_t type_size, size_t memory_size, void *base) {
     };
 }
 
-Array array(size_t type_size, size_t memory_size, void *base) {
+Array array_from(size_t type_size, size_t memory_size, void *base) {
     Array result = array_new(type_size);
     array_extend(&result, memory_size, base);
     return result;

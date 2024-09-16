@@ -1,6 +1,7 @@
 #include <string.h>
 #include "string.h"
 
+
 String string_from(char *base_c_string) {
     Array array = array_new(sizeof(char));
     size_t string_length = 0;
@@ -8,7 +9,6 @@ String string_from(char *base_c_string) {
     array_extend(&array, string_length, base_c_string);
     return (String) {._array = array};
 }
-
 
 String string_own(size_t memory_size, char *base_c_string) {
     String result;
